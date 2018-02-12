@@ -20,8 +20,9 @@ RUN cp "./dispatcher/dispatcher-apache2.2-4.2.3.so" "/etc/httpd/modules/dispatch
 RUN ln -s /etc/httpd/modules/dispatcher-apache2.2-4.2.3.so /etc/httpd/modules/mod_dispatcher.so
 
 # Add config files
-ADD https://raw.githubusercontent.com/ggotti/aem-dispatcher/master/httpd.conf /etc/httpd/conf/httpd.conf
-ADD https://raw.githubusercontent.com/ggotti/aem-dispatcher/master/dispatcher.any /etc/httpd/conf/dispatcher.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/httpd.conf /etc/httpd/conf/httpd.conf
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/dispatcher.any /etc/httpd/conf/dispatcher.any
+    
 
 CMD ["-D", "FOREGROUND"]
 ENTRYPOINT ["/usr/sbin/httpd"]
