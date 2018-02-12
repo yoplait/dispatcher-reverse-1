@@ -5,4 +5,4 @@ services:
     volumes:
       - .:/usr/share/nginx/html/
     expose:
-      - "80"
+      - "81"
