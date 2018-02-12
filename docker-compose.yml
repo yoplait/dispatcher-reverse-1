@@ -2,6 +2,7 @@ version: '3'
 services:
   proxy:
     build: ./
+    image: dispatcherreverse1_proxy:latest
     networks:
       - site1
       - site2

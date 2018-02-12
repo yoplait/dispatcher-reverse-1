@@ -33,9 +33,11 @@
       /rend01
         {
         # Hostname or IP of the render
-        /hostname publisher
+        #/hostname publisher
+        /hostname localhost
         # Port of the render
-        /port "4503"
+        #/port "4503"
+        /port "80"
         # Connect timeout in milliseconds, 0 to wait indefinitely
         # /timeout "0"
         }
