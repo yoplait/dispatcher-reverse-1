@@ -34,7 +34,7 @@
         {
         # Hostname or IP of the render
         #/hostname publisher
-        /hostname localhost
+        /hostname site1_app_1
         # Port of the render
         #/port "4503"
         /port "80"
