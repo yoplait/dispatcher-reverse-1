@@ -22,6 +22,8 @@ RUN ln -s /etc/httpd/modules/dispatcher-apache2.2-4.2.3.so /etc/httpd/modules/mo
 # Add config files
 ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/httpd.conf /etc/httpd/conf/httpd.conf
 ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/dispatcher.any /etc/httpd/conf/dispatcher.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/cache.any /etc/httpd/conf/cache.any
+ADD https://raw.githubusercontent.com/yoplait/dispatcher-reverse-1/master/filter.any /etc/httpd/conf/filter.any
     
 
 CMD ["-D", "FOREGROUND"]
