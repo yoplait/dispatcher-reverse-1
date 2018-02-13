@@ -1,17 +1,20 @@
-version: '3'
-services:
-  proxy:
-    build: ./
-    networks:
-      - site1
-      - site2
-    ports:
-      - 80:80
+version: '2'
 
-networks:
-  site1:
-    external:
-      name: site1_default
-  site2:
-    external:
-      name: site2_default
+services:
+    reverseproxy:
+        image: perezpardojc/dispatcher
+        ports:
+            - 80:80
+        restart: always
+
+    nginx:
+        depends_on:
+            - perezpardojc/dispatcher
+        image: perezpardojc/site1
+        restart: always
+
+    apache:
+        depends_on:
+            - reverseproxy
+        image: perezpardojc/site2
+        restart: always      
