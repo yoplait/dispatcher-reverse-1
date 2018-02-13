@@ -1,11 +1,14 @@
+version: "3"
 
 services:
+
     dispatcher:
         build: .
         ports:
             - 80:80
         networks:
             - web
+            
     site1:
         build: ./site1/
         depends_on:
