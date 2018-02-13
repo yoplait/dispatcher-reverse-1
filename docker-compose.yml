@@ -1,20 +1,20 @@
-version: '2'
+version: '3'
 
 services:
-    reverseproxy:
-        image: perezpardojc/dispatcher
+    dispatcher:
+        build: .
+        #image: dispatcher
         ports:
             - 80:80
-        restart: always
-
-    nginx:
+        
+    site1:
+        build: ./site1/
         depends_on:
-            - perezpardojc/dispatcher
-        image: perezpardojc/site1
-        restart: always
-
-    apache:
-        depends_on:
-            - reverseproxy
-        image: perezpardojc/site2
-        restart: always      
+            - dispatcher
+        #image: site1
+        
+    #site2:
+        #depends_on:
+            #- dispatcher
+        #image: site2
+        

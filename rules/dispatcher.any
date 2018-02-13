@@ -34,10 +34,10 @@
         {
         # Hostname or IP of the render
         #/hostname publisher
-        /hostname site1_app_1
+        /hostname dispatcherreverse1_site1_1
         # Port of the render
         #/port "4503"
-        /port "80"
+        /port "81"
         # Connect timeout in milliseconds, 0 to wait indefinitely
         # /timeout "0"
         }

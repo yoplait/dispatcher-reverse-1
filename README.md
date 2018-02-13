@@ -21,22 +21,26 @@ docker-compose pull
 docker-compose up -d --no-build
 
 cd ..
-
 cd ../reverse-proxy/
-
 docker build -t perezpardojc/dispatcher .
-docker build -t perezpardojc/site1 .
-docker build -t perezpardojc/site2 .
+docker build -t perezpardojc/site1 ./site1
+docker build -t perezpardojc/site2 ./site2
+
+docker build -t dispatcher .
+docker build -t site1 ./site1
+docker build -t site2 ./site2
 
 docker-compose build
 docker-compose pull
 docker-compose up -d --no-build
-zº
 
 docker exec -it dispatcherreverse1_proxy_1 /bin/bash
+docker exec -it dispatcherreverse1_reverseproxy_1 /bin/bash
+docker exec -it dispatcher /bin/bash
 
 dispatcherreverse1_proxy
 docker run -it -p 80:80 --entrypoint=/bin/bash dispatcherreverse1_proxy -i
+docker run -it -p 80:80 --entrypoint=/bin/bash dispatcher -i
 
 /usr/sbin/httpd
 netstat -plnt
@@ -71,3 +75,13 @@ docker run --name mynginx1 -v /tmp/perezpardojc/dispatcher-reverse-1/site1:/usr/
 docker run --name mynginx2 -v /tmp/perezpardojc/dispatcher-reverse-1/site2:/usr/share/nginx/html:ro -p 82:80 -P -d nginx
 docker run -itd --name docker-nginx -p 4503:80 nginx
 
+dispatcherreverse1_apache_1
+dispatcherreverse1_nginx_1
+
+docker network connect site1_default peaceful_noyce
+docker network connect site2_default peaceful_noyce
+docker network connect bridge peaceful_noyce
+docker network connect dispatcherreverse1_default peaceful_noyce
+
+ping dispatcherreverse1_site2_1
+ping dispatcherreverse1_site1_1
