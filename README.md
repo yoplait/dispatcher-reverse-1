@@ -1,14 +1,39 @@
 # dispatcher-reverse-1
 
-dispatcher-reverse-1
-===================================
 
 Tutorial
 ---------
 
 [Docker compose : AEM Dispatcher reverse proxy with multiple containers](https://www.linkedin.com/in/perezpardojc/) 
 
+
+### Cleanup process in your docker installation
+
+```
 docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -f status=exited -q)
+docker rmi $(docker images -a -q)
+
+otheres:
+
+docker system prune
+docker system prune -a
+docker images purge
+docker images -f dangling=true
+
+```
+
+### Build base image
+
+docker build -t perezpardojc/base ./base
+docker-compose up
+docker-compose up -d
+docker-compose up -d --no-build
+
+
+
+
+
 
 cd site1
 docker-compose build

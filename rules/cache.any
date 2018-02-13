@@ -1,4 +1,3 @@
-
       # The docroot must be equal to the document root of the webserver. The
       # dispatcher will store files relative to this directory and subsequent
       # requests may be "declined" by the dispatcher, allowing the webserver
