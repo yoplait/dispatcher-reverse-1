@@ -1,11 +1,9 @@
 # dispatcher-reverse-1
 
-
 Tutorial
 ---------
 
 [Docker compose : AEM Dispatcher reverse proxy with multiple containers](https://www.linkedin.com/in/perezpardojc/) 
-
 
 ### Cleanup process in your docker installation
 
@@ -14,7 +12,7 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -f status=exited -q)
 docker rmi $(docker images -a -q)
 
-otheres:
+others:
 
 docker system prune
 docker system prune -a
@@ -25,15 +23,18 @@ docker images -f dangling=true
 
 ### Build base image
 
+```
 docker build -t perezpardojc/base ./base
+docker-compose build
+docker-compose build --no-cache 
+
 docker-compose up
 docker-compose up -d
 docker-compose up -d --no-build
+docker-compose up --force-recreate 
 
-
-
-
-
+docker-compose down
+```
 
 cd site1
 docker-compose build
@@ -64,6 +65,7 @@ docker exec -it dispatcherreverse1_reverseproxy_1 /bin/bash
 docker exec -it dispatcher /bin/bash
 
 dispatcherreverse1_proxy
+docker run -it -p 80:80 --network=dispatcherreverse1_web --entrypoint=/bin/bash dispatcherreverse1_dispatcher -i
 docker run -it -p 80:80 --entrypoint=/bin/bash dispatcherreverse1_proxy -i
 docker run -it -p 80:80 --entrypoint=/bin/bash dispatcher -i
 
@@ -107,6 +109,7 @@ docker network connect site1_default peaceful_noyce
 docker network connect site2_default peaceful_noyce
 docker network connect bridge peaceful_noyce
 docker network connect dispatcherreverse1_default peaceful_noyce
+docker network connect dispatcherreverse1_web upbeat_yonath
 
 ping dispatcherreverse1_site2_1
 ping dispatcherreverse1_site1_1

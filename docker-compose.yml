@@ -11,8 +11,6 @@ services:
             
     site1:
         build: ./site1/
-        depends_on:
-            - dispatcher
         networks:
             - web
 
