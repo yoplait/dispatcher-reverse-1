@@ -1,3 +1,10 @@
+docker build -t dispatcher .
+docker build -t site1 ./site1
+docker build -t site2 ./site2
+
+docker-compose build
+docker-compose pull
+docker-compose up -d --no-build
 
 docker exec -it dispatcherreverse1_proxy_1 /bin/bash
 docker exec -it dispatcherreverse1_reverseproxy_1 /bin/bash

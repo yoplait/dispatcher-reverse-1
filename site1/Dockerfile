@@ -1,11 +1,6 @@
-FROM node
+FROM nginx
 
-MAINTAINER Juan Carlos Perez <perezpardojc@gmail.com>
+COPY index.html /usr/share/nginx/html
 
-RUN mkdir -p /usr/src/app
+EXPOSE 81
 
-COPY index.js /usr/src/app
-
-EXPOSE 80
-
-CMD [ "node", "/usr/src/app/index" ]
