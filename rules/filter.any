@@ -1,6 +1,6 @@
 # Deny everything first and then allow specific entries
-# /0001 { /type "deny" / glob "*" }
-/0002 { /type "allow" / glob "*" }
+# /0001 { /type "deny" /glob "*" }
+  /0002 { /type "allow" /glob "*" }
 #/0003 { 
 #  /type "allow" 
 #  /method "GET
